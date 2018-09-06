@@ -9,8 +9,11 @@ RUN rm /etc/localtime \
     && sed -i 's|^deb-src http://security.ubuntu.com/|#deb-src http://security.ubuntu.com/|g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y tzdata language-pack-zh-hans \
+    && apt-get install -y fontconfig fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy \
     && locale-gen zh_CN.GB18030 zh_CN.GBK zh_CN.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
+
+
 
 ENV LANG=zh_CN.UTF-8 \
     LANGUAGE=zh_CN:zh
