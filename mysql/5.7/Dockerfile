@@ -10,7 +10,8 @@ RUN rm /etc/localtime \
     && apt-get install -y fontconfig fonts-wqy-microhei fonts-wqy-zenhei xfonts-wqy \
     && sed -i -e 's|# en_US.UTF-8|en_US.UTF-8|g' -e 's|# zh_CN.GB18030|zh_CN.GB18030|g' -e 's|# zh_CN.GBK|zh_CN.GBK|g' -e 's|# zh_CN.UTF-8|zh_CN.UTF-8|g' -e 's|# zh_CN GB2312|zh_CN GB2312|g' /etc/locale.gen \
     && locale-gen \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "\n[mysqld]\nlower_case_table_names=1\n\ncharacter-set-server=utf8\n" > /etc/mysql/conf.d/my-zh-base.cnf
 
 
 ENV LANG=zh_CN.UTF-8 \
