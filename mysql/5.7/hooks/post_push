@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for SOURCE_COMMIT in {5,5.7}; do
+	docker tag $IMAGE_NAME $DOCKER_REPO:$SOURCE_COMMIT
+	docker push $DOCKER_REPO:$SOURCE_COMMIT
+done
